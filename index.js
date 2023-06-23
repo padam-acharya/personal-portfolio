@@ -1,6 +1,6 @@
 
 const spanEl = document.getElementById("dev")
-const spanEl2  = document.getElementById("designer")
+const spanEl2 = document.getElementById("designer")
 
 const navBarEl = document.querySelector(".nav-bar")
 const heroEl = document.querySelector(".hero")
@@ -45,16 +45,16 @@ const duration = {
     duration: 1100,
 }
 
-const arr = ['Developer', 'Designer','Fresher']
+const arr = ['Developer', 'Designer', 'Fresher']
 
 let carrerIndex = 0
 let value = ''
-let index =  0
+let index = 0
 
 // hamburger-menu
 let isShown = false
 const sideBarEl = document.createElement("div")
- document.body.append(sideBarEl)
+document.body.append(sideBarEl)
 
 sideBarEl.innerHTML = `<li><a href="#header-section">Home</a></li>
                 <li><a href="#about-section">About</a></li>
@@ -64,68 +64,67 @@ sideBarEl.innerHTML = `<li><a href="#header-section">Home</a></li>
 
 sideBarEl.style.display = "none"
 
-hamburgerEl.addEventListener("click",()=>{
+hamburgerEl.addEventListener("click", () => {
     console.log("clicked")
-    if(!isShown){
+    if (!isShown) {
         isShown = true
         sideBarEl.style.display = "block"
-       sideBarEl.classList.add("sidebar")
-
-    //    hamburgerEl.innerHTML = `<i class="fa-solid fa-xmark "></i>`
+        sideBarEl.classList.add("sidebar")
     }
-    else{
+    else {
+        isShown = false
+        sideBarEl.style.display = "none"
+        sideBarEl.classList.remove("sidebar")
+
+    }
+})
+
+
+window.addEventListener("scroll", () => {
+
+    // close hamburger on scroll
+    if (isShown) {
         isShown = false
         sideBarEl.style.display = "none"
         sideBarEl.classList.remove("sidebar")
         // hamburgerEl.innerHTML = `<i class="fa-solid fa-bars "></i>`
     }
-})
 
-
-window.addEventListener("scroll",()=>{
-
-    // close hamburger on scroll
-    if(isShown){
-        isShown = false
-        sideBarEl.style.display = "none"
-        sideBarEl.classList.remove("sidebar")
-    }
-
-    if(window.scrollY > heroEl.offsetTop){
+    if (window.scrollY > heroEl.offsetTop) {
         navBarEl.classList.add("sticky-blue")
-       portfolioHeadingEl.style.color = "white"
-       scrollTopEl.style.display = "flex"
+        portfolioHeadingEl.style.color = "white"
+        scrollTopEl.style.display = "flex"
     }
-    else{
+    else {
         navBarEl.classList.remove("sticky-blue")
         portfolioHeadingEl.style.color = "blue"
         scrollTopEl.style.display = "none"
     }
 
-    if(window.scrollY > aboutSectionEl.offsetTop - aboutSectionEl.offsetHeight){
+    if (window.scrollY > aboutSectionEl.offsetTop - aboutSectionEl.offsetHeight) {
         aboutImgContainerEl.classList.add("left-fade")
         aboutInfoEl.classList.add("right-fade")
     }
-    else{
+    else {
         aboutImgContainerEl.classList.remove("left-fade")
         aboutInfoEl.classList.remove("right-fade")
     }
 
-    if(window.scrollY > skillSectionEl.offsetTop - skillSectionEl.offsetHeight){
+    if (window.scrollY > skillSectionEl.offsetTop - skillSectionEl.offsetHeight) {
         listContainerEl.classList.add("left-fade")
-       aboutTechInfoEl.classList.add("right-fade")
+        aboutTechInfoEl.classList.add("right-fade")
     }
-    else{
-        
-         listContainerEl.classList.remove("left-fade")
+    else {
+
+        listContainerEl.classList.remove("left-fade")
         aboutTechInfoEl.classList.remove("right-fade")
     }
 
-    if(window.scrollY > contactMeSectionEl.offsetTop - contactMeSectionEl.offsetHeight - 120){
+    if (window.scrollY > contactMeSectionEl.offsetTop - contactMeSectionEl.offsetHeight - 120) {
         contactInfoDetailEl.classList.add("ping-animation")
     }
-    else{
-        
+    else {
+
         contactInfoDetailEl.classList.remove("ping-animation")
 
     }
@@ -133,52 +132,52 @@ window.addEventListener("scroll",()=>{
 
 })
 
-function showText(){     
-        if(carrerIndex === arr.length){
-            carrerIndex = 0
-            value=''
-        }
-        value+= arr[carrerIndex][index]
-        spanEl.textContent = value
-        spanEl2.textContent = value
-        if(index === arr[carrerIndex].length-1){
-            index = 0
-            carrerIndex++
-            value=''
-        }
-        else{
+function showText() {
+    if (carrerIndex === arr.length) {
+        carrerIndex = 0
+        value = ''
+    }
+    value += arr[carrerIndex][index]
+    spanEl.textContent = value
+    spanEl2.textContent = value
+    if (index === arr[carrerIndex].length - 1) {
+        index = 0
+        carrerIndex++
+        value = ''
+    }
+    else {
         index++
-        }
-   
+    }
+
 
     setTimeout(showText, 200)
 
 }
 
-function waveAnimation(){
-    
-    liEls.forEach(liEl =>{
-        i= 1
-        
-            liEl.classList.add('wave-animation')
+function waveAnimation() {
 
-        
+    liEls.forEach(liEl => {
+        i = 1
+
+        liEl.classList.add('wave-animation')
+
+
         i++
-         
+
         // i= i++  
     })
-   
+
 }
 
-function displayProgress(){
+function displayProgress() {
     let i = 0
     progressBar.forEach(item => {
-        
+
         const skillBarPer = skillPercentage[i].textContent
         const progressEl = document.createElement("div")
-        progressEl.style.width= skillBarPer
-         progressEl.style.height = 5 + 'px'
-         progressEl.style.backgroundColor = "blue"
+        progressEl.style.width = skillBarPer
+        progressEl.style.height = 5 + 'px'
+        progressEl.style.backgroundColor = "blue"
         item.appendChild(progressEl)
         i++
     })
@@ -187,33 +186,33 @@ function displayProgress(){
 let currentImage = 1
 let timeout
 
-prevEl.addEventListener("click",()=>{
+prevEl.addEventListener("click", () => {
     console.log("clicked")
     currentImage--
     clearTimeout(timeout)
     updateProject()
 })
 
-nextEl.addEventListener("click",()=>{
+nextEl.addEventListener("click", () => {
     currentImage++
     clearTimeout(timeout)
     updateProject()
 })
 
-function updateProject(){
-    if(currentImage < 1){
+function updateProject() {
+    if (currentImage < 1) {
         currentImage = imgEls.length
     }
-    if(currentImage > imgEls.length){
+    if (currentImage > imgEls.length) {
         currentImage = 1
     }
 
-    projectCarouselEl.style.transform = `translate(-${(currentImage - 1)*300}px)`
+    projectCarouselEl.style.transform = `translate(-${(currentImage - 1) * 100}%)`
 
-    timeout = setTimeout(()=>{
+    timeout = setTimeout(() => {
         currentImage++
         updateProject()
-    },2000)
+    }, 2000)
 }
 
 
