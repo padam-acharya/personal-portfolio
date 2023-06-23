@@ -787,11 +787,25 @@ footer > small > a {
     margin-top: 5rem;
   }
 
+  .navigate-btn.left {
+    display: none;
+  }
+
+  .navigate-btn.right {
+    display: none;
+  }
+
   .project-wrapper {
     max-width: 100%;
   }
 
   .img-slider {
-    width: 22.24rem;
+    width: 22.24em;
+  }
+}
+
+@media (max-width: 364px) {
+  .img-slider {
+    width: 19.24em;
   }
 }
