@@ -43,6 +43,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: var(--blue);
+}
+
 button {
   outline: none;
   border: 0;
@@ -68,6 +72,17 @@ button {
   transform: scale(1.03);
 }
 
+.icons {
+  padding: 20px 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.icons > a > i {
+  font-size: 1.2rem;
+}
+
 .text-white {
   color: var(--white);
 }
@@ -88,11 +103,12 @@ button {
   position: absolute;
   right: 8px;
   top: 10px;
-  width: 55vw;
+  width: 50vw;
   border-radius: 3px;
   padding: 30px 0 10px;
   display: flex;
   flex-direction: column;
+  text-align: center;
   gap: 8px;
   background-color: var(--customColor);
   color: var(--black);
@@ -110,7 +126,7 @@ button {
   transition: background-color, color 0.5s ease-in;
 }
 
-.sidebar > li:hover {
+.sidebar > li:hover:not(.icons) {
   background-color: var(--purple);
 }
 
@@ -489,6 +505,7 @@ button {
   color: var(--white);
   position: relative;
   max-width: 100vw;
+  padding-bottom: 20px;
 }
 
 .project-heading {
@@ -503,12 +520,13 @@ button {
 .project-wrapper {
   padding: 30px 0;
   max-width: 90%;
-  height: 400px;
+  /* height: 400px; */
   margin: auto;
   position: relative;
 }
 
 .navigate-btn {
+  display: block;
   position: absolute;
   background: transparent;
   padding: 5px;
@@ -550,16 +568,21 @@ button {
   transition: transform 0.5s ease-in-out;
 }
 
-.project-carousel > img {
+.project-carousel .slider-image {
   width: 100%;
   background-position: center;
   object-fit: cover;
 }
 
-.project-info .desc {
-  margin: 10px auto;
-  text-align: justify;
-  /* width: 80%; */
+.project-carousel .desc {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  word-break: break-word;
+  margin: auto;
+  text-align: center;
+  line-height: 1.5;
 }
 
 /* ******* SKILLS SECTION ********* */
@@ -787,11 +810,7 @@ footer > small > a {
     margin-top: 5rem;
   }
 
-  .navigate-btn.left {
-    display: none;
-  }
-
-  .navigate-btn.right {
+  .navigate-btn {
     display: none;
   }
 

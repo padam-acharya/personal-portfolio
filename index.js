@@ -8,7 +8,7 @@ const heroEl = document.querySelector(".hero")
 const portfolioHeadingEl = document.querySelector(".portfolio-heading")
 const liEls = document.querySelectorAll(".nav-links>li")
 
-const projectCarouselEl = document.querySelector(".project-carousel")
+const projectCarouselEl = document.querySelectorAll(".project-carousel")
 const imgEls = document.querySelectorAll(".project-carousel img")
 
 const prevEl = document.querySelector(".left")
@@ -60,7 +60,13 @@ sideBarEl.innerHTML = `<li><a href="#header-section">Home</a></li>
                 <li><a href="#about-section">About</a></li>
                 <li><a href="#projects-section">Projects</a></li>
                 <li><a href="#skills-section">Skills</a></li>
-                <li><a href="#contact-me-section">Contact</a></li>`
+                <li><a href="#contact-me-section">Contact</a></li>
+                <li class="icons">
+                <a href="https://github.com/padam-acharya"><i class="fa-brands fa-github" target="_blank"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/padam-acharya-026127280/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>`
 
 sideBarEl.style.display = "none"
 
@@ -207,7 +213,8 @@ function updateProject() {
         currentImage = 1
     }
 
-    projectCarouselEl.style.transform = `translate(-${(currentImage - 1) * 100}%)`
+    projectCarouselEl[0].style.transform = `translate(-${(currentImage - 1) * 100}%)`
+    projectCarouselEl[1].style.transform = `translate(-${(currentImage - 1) * 100}%)`
 
     timeout = setTimeout(() => {
         currentImage++
