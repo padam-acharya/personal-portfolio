@@ -224,21 +224,37 @@ function updateProject() {
 
 
 function stopOnHover() {
-    Array.from(projectCarouselEl).map(item => {
-        item.addEventListener('mouseover', () => {
-            console.log('mouseover')
-            clearTimeout(timeout)
-        })
+    Array.from(projectCarouselEl).forEach(item => {
+        ['mouseover', 'touchstart'].forEach(event =>
+            item.addEventListener(event, () => {
+                console.log('mouseover')
+                clearTimeout(timeout)
+            })
+        )
 
-        item.addEventListener('mouseout', () => {
-            console.log('mouseout')
-            // clearTimeout(timeout)
+        if ('ontouchend' in document.documentElement) {
+            ['mouseout', 'touchend'].forEach(event =>
+                item.addEventListener(event, () => {
+                    console.log('mouseout');
+                    clearTimeout(timeout);
 
-            timeout = setTimeout(() => {
-                currentImage++
-                updateProject()
-            }, 1000)
-        })
+                    timeout = setTimeout(() => {
+                        currentImage++;
+                        updateProject();
+                    }, 1000);
+                })
+            );
+        } else {
+            item.addEventListener('mouseout', () => {
+                console.log('mouseout');
+                clearTimeout(timeout);
+
+                timeout = setTimeout(() => {
+                    currentImage++;
+                    updateProject();
+                }, 1000);
+            });
+        }
     })
 }
 
