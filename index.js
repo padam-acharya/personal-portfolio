@@ -223,6 +223,24 @@ function updateProject() {
 }
 
 
+function stopOnHover() {
+    Array.from(projectCarouselEl).map(item => {
+        item.addEventListener('mouseover', () => {
+            console.log('mouseover')
+            clearTimeout(timeout)
+        })
+
+        item.addEventListener('mouseout', () => {
+            console.log('mouseout')
+            // clearTimeout(timeout)
+
+            timeout = setTimeout(() => {
+                currentImage++
+                updateProject()
+            }, 1000)
+        })
+    })
+}
 
 // h3El.animate(fadeIn,{duration: 800})
 // h1El.animate(fadeIn,duration)
@@ -232,3 +250,4 @@ showText()
 waveAnimation()
 displayProgress()
 updateProject()
+stopOnHover()
